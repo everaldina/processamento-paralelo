@@ -1,0 +1,289 @@
+=== INICIANDO BATERIA DE VERIFICACAO ===
+ID da Imagem: TRV1P1
+Quantidade de cortes B avaliados: 64
+Tempo de Leitura Total (A+B): 0.941949 s
+Tempo Medio Calculo SSIM (por slice): 0.0250146 s
+Tempo de Busca (SSIM loop): 1.6452 s
+Tempo Total do Processo: 2.58881 s
+Melhor Slice (Z): 1
+SSIM Maximo Encontrado: 0.78753
+--------------------------------------------------------
+ID da Imagem: TRV1P2
+Quantidade de cortes B avaliados: 56
+Tempo de Leitura Total (A+B): 0.743664 s
+Tempo Medio Calculo SSIM (por slice): 0.0251286 s
+Tempo de Busca (SSIM loop): 1.44664 s
+Tempo Total do Processo: 2.19187 s
+Melhor Slice (Z): 10
+SSIM Maximo Encontrado: 0.787048
+--------------------------------------------------------
+ID da Imagem: TRV1P3
+Quantidade de cortes B avaliados: 56
+Tempo de Leitura Total (A+B): 0.868253 s
+Tempo Medio Calculo SSIM (por slice): 0.0243779 s
+Tempo de Busca (SSIM loop): 1.40051 s
+Tempo Total do Processo: 2.27028 s
+Melhor Slice (Z): 1
+SSIM Maximo Encontrado: 0.738336
+--------------------------------------------------------
+ID da Imagem: TRV1P4
+Quantidade de cortes B avaliados: 64
+Tempo de Leitura Total (A+B): 1.00633 s
+Tempo Medio Calculo SSIM (por slice): 0.0243664 s
+Tempo de Busca (SSIM loop): 1.60302 s
+Tempo Total do Processo: 2.61108 s
+Melhor Slice (Z): 33
+SSIM Maximo Encontrado: 0.789451
+--------------------------------------------------------
+ID da Imagem: TRV1P5
+Quantidade de cortes B avaliados: 48
+Tempo de Leitura Total (A+B): 1.14766 s
+Tempo Medio Calculo SSIM (por slice): 0.0265956 s
+Tempo de Busca (SSIM loop): 1.31149 s
+Tempo Total do Processo: 2.46042 s
+Melhor Slice (Z): 1
+SSIM Maximo Encontrado: 0.798552
+--------------------------------------------------------
+ID da Imagem: TRV1P6
+Quantidade de cortes B avaliados: 56
+Tempo de Leitura Total (A+B): 0.81212 s
+Tempo Medio Calculo SSIM (por slice): 0.0338268 s
+Tempo de Busca (SSIM loop): 1.94146 s
+Tempo Total do Processo: 2.75526 s
+Melhor Slice (Z): 26
+SSIM Maximo Encontrado: 0.824883
+--------------------------------------------------------
+ID da Imagem: TRV1P7
+Quantidade de cortes B avaliados: 56
+Tempo de Leitura Total (A+B): 1.01382 s
+Tempo Medio Calculo SSIM (por slice): 0.0257281 s
+Tempo de Busca (SSIM loop): 1.48096 s
+Tempo Total do Processo: 2.49592 s
+Melhor Slice (Z): 29
+SSIM Maximo Encontrado: 0.780166
+--------------------------------------------------------
+ID da Imagem: TRV1P8
+Quantidade de cortes B avaliados: 56
+Tempo de Leitura Total (A+B): 0.794675 s
+Tempo Medio Calculo SSIM (por slice): 0.0253033 s
+Tempo de Busca (SSIM loop): 1.45672 s
+Tempo Total do Processo: 2.25276 s
+Melhor Slice (Z): 25
+SSIM Maximo Encontrado: 0.747136
+--------------------------------------------------------
+ID da Imagem: TRV2P1
+Quantidade de cortes B avaliados: 47
+Tempo de Leitura Total (A+B): 2.51726 s
+Tempo Medio Calculo SSIM (por slice): 0.0261184 s
+Tempo de Busca (SSIM loop): 1.26164 s
+Tempo Total do Processo: 3.78064 s
+Melhor Slice (Z): 23
+SSIM Maximo Encontrado: 0.809019
+--------------------------------------------------------
+ID da Imagem: TRV2P2
+Quantidade de cortes B avaliados: 47
+Tempo de Leitura Total (A+B): 1.92931 s
+Tempo Medio Calculo SSIM (por slice): 0.0273288 s
+Tempo de Busca (SSIM loop): 1.31605 s
+Tempo Total do Processo: 3.24697 s
+Melhor Slice (Z): 20
+SSIM Maximo Encontrado: 0.77548
+--------------------------------------------------------
+ID da Imagem: TRV2P3
+Quantidade de cortes B avaliados: 43
+Tempo de Leitura Total (A+B): 1.90629 s
+Tempo Medio Calculo SSIM (por slice): 0.0262067 s
+Tempo de Busca (SSIM loop): 1.15769 s
+Tempo Total do Processo: 3.06541 s
+Melhor Slice (Z): 16
+SSIM Maximo Encontrado: 0.750202
+--------------------------------------------------------
+ID da Imagem: TRV2P4
+Quantidade de cortes B avaliados: 47
+Tempo de Leitura Total (A+B): 1.84298 s
+Tempo Medio Calculo SSIM (por slice): 0.0275121 s
+Tempo de Busca (SSIM loop): 1.32799 s
+Tempo Total do Processo: 3.17251 s
+Melhor Slice (Z): 21
+SSIM Maximo Encontrado: 0.810594
+--------------------------------------------------------
+ID da Imagem: TRV2P5
+Quantidade de cortes B avaliados: 47
+Tempo de Leitura Total (A+B): 2.49905 s
+Tempo Medio Calculo SSIM (por slice): 0.0293272 s
+Tempo de Busca (SSIM loop): 1.41522 s
+Tempo Total do Processo: 3.91662 s
+Melhor Slice (Z): 21
+SSIM Maximo Encontrado: 0.854022
+--------------------------------------------------------
+ID da Imagem: TRV2P6
+Quantidade de cortes B avaliados: 47
+Tempo de Leitura Total (A+B): 3.48425 s
+Tempo Medio Calculo SSIM (por slice): 0.0628536 s
+Tempo de Busca (SSIM loop): 3.01173 s
+Tempo Total do Processo: 6.49793 s
+Melhor Slice (Z): 22
+SSIM Maximo Encontrado: 0.833
+--------------------------------------------------------
+ID da Imagem: TRV2P7
+Quantidade de cortes B avaliados: 47
+Tempo de Leitura Total (A+B): 2.83506 s
+Tempo Medio Calculo SSIM (por slice): 0.0311111 s
+Tempo de Busca (SSIM loop): 1.49855 s
+Tempo Total do Processo: 4.33468 s
+Melhor Slice (Z): 21
+SSIM Maximo Encontrado: 0.703051
+--------------------------------------------------------
+ID da Imagem: TRV2P8
+Quantidade de cortes B avaliados: 47
+Tempo de Leitura Total (A+B): 1.93706 s
+Tempo Medio Calculo SSIM (por slice): 0.0356946 s
+Tempo de Busca (SSIM loop): 1.71775 s
+Tempo Total do Processo: 3.65624 s
+Melhor Slice (Z): 24
+SSIM Maximo Encontrado: 0.729091
+--------------------------------------------------------
+ID da Imagem: TRV3P1
+Quantidade de cortes B avaliados: 39
+Tempo de Leitura Total (A+B): 1.14605 s
+Tempo Medio Calculo SSIM (por slice): 0.0267368 s
+Tempo de Busca (SSIM loop): 1.07237 s
+Tempo Total do Processo: 2.22039 s
+Melhor Slice (Z): 32
+SSIM Maximo Encontrado: 0.51117
+--------------------------------------------------------
+ID da Imagem: TRV3P2
+Quantidade de cortes B avaliados: 41
+Tempo de Leitura Total (A+B): 1.09531 s
+Tempo Medio Calculo SSIM (por slice): 0.0274245 s
+Tempo de Busca (SSIM loop): 1.15635 s
+Tempo Total do Processo: 2.25344 s
+Melhor Slice (Z): 20
+SSIM Maximo Encontrado: 0.810171
+--------------------------------------------------------
+ID da Imagem: TRV3P3
+Quantidade de cortes B avaliados: 41
+Tempo de Leitura Total (A+B): 1.31415 s
+Tempo Medio Calculo SSIM (por slice): 0.0265978 s
+Tempo de Busca (SSIM loop): 1.11676 s
+Tempo Total do Processo: 2.43265 s
+Melhor Slice (Z): 20
+SSIM Maximo Encontrado: 0.792257
+--------------------------------------------------------
+ID da Imagem: TRV3P4
+Quantidade de cortes B avaliados: 41
+Tempo de Leitura Total (A+B): 1.06799 s
+Tempo Medio Calculo SSIM (por slice): 0.0293314 s
+Tempo de Busca (SSIM loop): 1.2633 s
+Tempo Total do Processo: 2.33297 s
+Melhor Slice (Z): 21
+SSIM Maximo Encontrado: 0.737331
+--------------------------------------------------------
+ID da Imagem: TRV3P5
+Quantidade de cortes B avaliados: 41
+Tempo de Leitura Total (A+B): 1.271 s
+Tempo Medio Calculo SSIM (por slice): 0.0271599 s
+Tempo de Busca (SSIM loop): 1.14501 s
+Tempo Total do Processo: 2.41793 s
+Melhor Slice (Z): 19
+SSIM Maximo Encontrado: 0.539849
+--------------------------------------------------------
+ID da Imagem: TRV3P6
+Quantidade de cortes B avaliados: 43
+Tempo de Leitura Total (A+B): 1.18765 s
+Tempo Medio Calculo SSIM (por slice): 0.0263354 s
+Tempo de Busca (SSIM loop): 1.16473 s
+Tempo Total do Processo: 2.35401 s
+Melhor Slice (Z): 17
+SSIM Maximo Encontrado: 0.612429
+--------------------------------------------------------
+ID da Imagem: TRV3P7
+Quantidade de cortes B avaliados: 54
+Tempo de Leitura Total (A+B): 1.45595 s
+Tempo Medio Calculo SSIM (por slice): 0.0300393 s
+Tempo de Busca (SSIM loop): 1.66114 s
+Tempo Total do Processo: 3.11886 s
+Melhor Slice (Z): 25
+SSIM Maximo Encontrado: 0.715426
+--------------------------------------------------------
+ID da Imagem: TRV3P8
+Quantidade de cortes B avaliados: 46
+Tempo de Leitura Total (A+B): 1.0599 s
+Tempo Medio Calculo SSIM (por slice): 0.0259635 s
+Tempo de Busca (SSIM loop): 1.22343 s
+Tempo Total do Processo: 2.28464 s
+Melhor Slice (Z): 15
+SSIM Maximo Encontrado: 0.54887
+--------------------------------------------------------
+ID da Imagem: TRV4P1
+Quantidade de cortes B avaliados: 48
+Tempo de Leitura Total (A+B): 1.72189 s
+Tempo Medio Calculo SSIM (por slice): 0.0266017 s
+Tempo de Busca (SSIM loop): 1.31051 s
+Tempo Total do Processo: 3.03391 s
+Melhor Slice (Z): 25
+SSIM Maximo Encontrado: 0.561946
+--------------------------------------------------------
+ID da Imagem: TRV4P2
+Quantidade de cortes B avaliados: 54
+Tempo de Leitura Total (A+B): 2.02149 s
+Tempo Medio Calculo SSIM (por slice): 0.0263411 s
+Tempo de Busca (SSIM loop): 1.46156 s
+Tempo Total do Processo: 3.48489 s
+Melhor Slice (Z): 20
+SSIM Maximo Encontrado: 0.377974
+--------------------------------------------------------
+ID da Imagem: TRV4P3
+Quantidade de cortes B avaliados: 42
+Tempo de Leitura Total (A+B): 1.59398 s
+Tempo Medio Calculo SSIM (por slice): 0.0315227 s
+Tempo de Busca (SSIM loop): 1.35995 s
+Tempo Total do Processo: 2.95537 s
+Melhor Slice (Z): 15
+SSIM Maximo Encontrado: 0.393747
+--------------------------------------------------------
+ID da Imagem: TRV4P4
+Quantidade de cortes B avaliados: 42
+Tempo de Leitura Total (A+B): 1.48811 s
+Tempo Medio Calculo SSIM (por slice): 0.0266961 s
+Tempo de Busca (SSIM loop): 1.14949 s
+Tempo Total do Processo: 2.63941 s
+Melhor Slice (Z): 20
+SSIM Maximo Encontrado: 0.588116
+--------------------------------------------------------
+ID da Imagem: TRV4P5
+Quantidade de cortes B avaliados: 48
+Tempo de Leitura Total (A+B): 1.56875 s
+Tempo Medio Calculo SSIM (por slice): 0.026426 s
+Tempo de Busca (SSIM loop): 1.30378 s
+Tempo Total do Processo: 2.87414 s
+Melhor Slice (Z): 21
+SSIM Maximo Encontrado: 0.505392
+--------------------------------------------------------
+ID da Imagem: TRV4P6
+Quantidade de cortes B avaliados: 48
+Tempo de Leitura Total (A+B): 1.6263 s
+Tempo Medio Calculo SSIM (por slice): 0.0302896 s
+Tempo de Busca (SSIM loop): 1.48999 s
+Tempo Total do Processo: 3.11779 s
+Melhor Slice (Z): 22
+SSIM Maximo Encontrado: 0.58731
+--------------------------------------------------------
+ID da Imagem: TRV4P7
+Quantidade de cortes B avaliados: 36
+Tempo de Leitura Total (A+B): 1.42133 s
+Tempo Medio Calculo SSIM (por slice): 0.0276007 s
+Tempo de Busca (SSIM loop): 1.01935 s
+Tempo Total do Processo: 2.44182 s
+Melhor Slice (Z): 9
+SSIM Maximo Encontrado: 0.39769
+--------------------------------------------------------
+ID da Imagem: TRV4P8
+Quantidade de cortes B avaliados: 48
+Tempo de Leitura Total (A+B): 1.74514 s
+Tempo Medio Calculo SSIM (por slice): 0.0286376 s
+Tempo de Busca (SSIM loop): 1.41035 s
+Tempo Total do Processo: 3.15744 s
+Melhor Slice (Z): 23
+SSIM Maximo Encontrado: 0.481211
+--------------------------------------------------------
