@@ -96,7 +96,7 @@ void process_image_pair(const std::string& image_id, const std::string& pathA, c
         std::cout << "Melhor corte de B: Z=" << best_slice_B << " | SSIM: " << max_ssim << std::endl;
         
         // --- LOG ---
-        log_file << std::fixed << std::setprecision(std::numeric_limits<float>::max_digits10);
+        log_file << std::fixed << std::setprecision(std::numeric_limits<double>::max_digits10);
         log_file << "ID da Imagem: " << image_id << "\n";
         log_file << "Quantidade de cortes B avaliados: " << cortes_B << "\n";
         log_file << "Tempo de Leitura Total (A+B): " << time_read << " s\n";
@@ -157,12 +157,20 @@ int main() {
     std::string pathA, pathB, base_path;
     for (const auto& id : ids_imagens) {
         base_path = (contains(ids_imagens_train, id)) ? base_path_train : base_path_test;
-
+        
+        // deslizando B sobre slice central de A
         pathA = base_path + "/" + id + "CTI.mhd";
         pathB = base_path + "/" + id + "CTAI.mhd";
 
         for (int rep = 0; rep < numRepeticoes; ++rep) {
-            // deslizando B sobre slice central de A
+            process_image_pair(id, pathA, pathB, log_file);
+            log_file.flush(); // garantir que o log seja escrito a cada repetição
+        }
+
+        // adicional para ter mais dados de tempo
+        pathA = base_path + "/" + id + "CTAI.mhd";
+        pathB = base_path + "/" + id + "CTI.mhd";
+        for (int rep = 0; rep < numRepeticoes; ++rep) {
             process_image_pair(id, pathA, pathB, log_file);
             log_file.flush(); // garantir que o log seja escrito a cada repetição
         }
