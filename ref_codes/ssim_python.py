@@ -3,7 +3,7 @@ import numpy as np
 import SimpleITK as sitk
 from skimage.metrics import structural_similarity as ssim
 
-def process_image_pair(base_path, image_id, log_file):
+def process_image_pair(base_path, image_id, log_file, win_size=7):
     t_start_total = time.time()
 
     pathA = f"{base_path}/{image_id}CTI.mhd"
@@ -46,7 +46,7 @@ def process_image_pair(base_path, image_id, log_file):
         
         if central_sliceA.shape == sliceB_temp.shape:
             t_start_ssim = time.time()
-            current_ssim = ssim(central_sliceA, sliceB_temp, data_range=65535.0, win_size=7)
+            current_ssim = ssim(central_sliceA, sliceB_temp, data_range=65535.0, win_size=win_size)
             t_end_ssim = time.time()
             
             total_ssim_time += (t_end_ssim - t_start_ssim)
@@ -68,6 +68,7 @@ def process_image_pair(base_path, image_id, log_file):
         print(f"Melhor corte de B: Z={best_slice_B} | SSIM: {max_ssim}")
         
         log_file.write(f"ID da Imagem: {image_id}\n")
+        log_file.write(f"Kernel Window Size: {win_size}\n")
         log_file.write(f"Quantidade de cortes B avaliados: {cortes_B}\n")
         log_file.write(f"Tempo de Leitura Total (A+B): {time_read} s\n")
         log_file.write(f"Tempo Medio Calculo SSIM (por slice): {time_avg_ssim} s\n")
@@ -93,7 +94,8 @@ def main():
     with open("data/log_python.txt", "w") as log_file:
         log_file.write("=== INICIANDO BATERIA DE VERIFICACAO ===\n")
         for image_id in ids_imagens:
-            process_image_pair(base_path, image_id, log_file)
+            for win_size in [5, 7]:  # testando diferentes tamanhos de janela
+                process_image_pair(base_path, image_id, log_file, win_size)
 
     print("\nProcessamento finalizado! Log salvo em data/log_python.txt.")
 
