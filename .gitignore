@@ -226,3 +226,5 @@ tasks.json
 
 # data
 data/
+
+.python-version
