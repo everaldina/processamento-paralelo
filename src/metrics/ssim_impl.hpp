@@ -5,8 +5,8 @@
 
 namespace metrics {
     template<typename T>
-    double calculate_ssim(const std::vector<T>& im1, const std::vector<T>& im2, int width, int height, double data_range, int win_size) {
-        if (im1.size() != im2.size() || im1.size() != static_cast<size_t>(width * height)) {
+    double calculate_ssim(const T* im1, const T* im2, int width, int height, double data_range, int win_size) {
+        if (!im1 || !im2) {
             return 0.0;
         }
 

@@ -18,7 +18,7 @@ void save_debug_images(int id, const std::string& pathA, const std::string& path
     saver.save(pathB, eixo, best_slice_B, id + "_ImgB_MaisParecida_com_A");
 }
 
-void process_image_pair(const std::string& image_id, const std::string& pathA, const std::string& pathB, std::ofstream& log_file) {
+void process_image_pair(const std::string& image_id, const std::string& pathA, const std::string& pathB, std::ofstream& log_file, int window_size = 7) {
     auto t_start_total = std::chrono::high_resolution_clock::now();
     std::cout << "\n=======================================" << std::endl;
     std::cout << "Processando ID: " << image_id << std::endl;
@@ -36,6 +36,7 @@ void process_image_pair(const std::string& image_id, const std::string& pathA, c
         std::cerr << "Falha ao ler a imagem B: " << pathB << std::endl;
         return;
     }
+    std::vector<short> volume_B = readerB.getVolumeAs<short>();
     auto t_end_read = std::chrono::high_resolution_clock::now();
     double time_read = std::chrono::duration<double>(t_end_read - t_start_read).count();
 
@@ -63,23 +64,30 @@ void process_image_pair(const std::string& image_id, const std::string& pathA, c
 
     std::cout << "Buscando melhor match entre " << cortes_B << " fatias de B..." << std::endl;
 
+    int pixels_per_slice = widthA * heightA;
+
+    if (dimB[0] != widthA || dimB[1] != heightA) {
+        std::cerr << "Dimensoes de A e B sao incompativeis!" << std::endl;
+        return;
+    }
+
+    const short* ptr_central_A = central_sliceA.data();
+
     for (int i = 0; i < cortes_B; ++i) {
-        int widthTemp = 0, heigthTemp = 0;
-        std::vector<short> sliceB = readerB.getSliceAs<short>(eixo, i, widthTemp, heigthTemp);
-        
-        if (!sliceB.empty() && widthTemp == widthA && heigthTemp == heightA) {
-            auto t_start_slice = std::chrono::high_resolution_clock::now();
-            double data_range = 65535.0; // short range
-            double current_ssim = metrics::calculate_ssim(central_sliceA, sliceB, widthA, heightA, data_range, 7);
-            auto t_end_slice = std::chrono::high_resolution_clock::now();
+        const short* ptr_slice_B = volume_B.data() + (i * pixels_per_slice);
 
-            total_ssim_time += std::chrono::duration<double>(t_end_slice - t_start_slice).count();
-            ssim_calc_count++;
+        auto t_start_slice = std::chrono::high_resolution_clock::now();
+        double data_range = 65535.0; // short range
 
-            if (current_ssim > max_ssim) {
-                max_ssim = current_ssim;
-                best_slice_B = i;
-            }
+        double current_ssim = metrics::calculate_ssim(ptr_central_A, ptr_slice_B, widthA, heightA, data_range, window_size);
+        auto t_end_slice = std::chrono::high_resolution_clock::now();
+
+        total_ssim_time += std::chrono::duration<double>(t_end_slice - t_start_slice).count();
+        ssim_calc_count++;
+
+        if (current_ssim > max_ssim) {
+            max_ssim = current_ssim;
+            best_slice_B = i;
         }
     }
 
@@ -98,6 +106,7 @@ void process_image_pair(const std::string& image_id, const std::string& pathA, c
         // --- LOG ---
         log_file << std::fixed << std::setprecision(std::numeric_limits<double>::max_digits10);
         log_file << "ID da Imagem: " << image_id << "\n";
+        log_file << "Kernel Window Size: " << window_size << "\n";
         log_file << "Quantidade de cortes B avaliados: " << cortes_B << "\n";
         log_file << "Tempo de Leitura Total (A+B): " << time_read << " s\n";
         log_file << "Tempo Medio Calculo SSIM (por slice): " << time_avg_ssim << " s\n";
@@ -138,6 +147,8 @@ int main() {
         "TEV4P1", "TEV4P2", "TEV4P3", "TEV4P4", "TEV4P5", "TEV4P6", "TEV4P7", "TEV4P8", 
         "VAV1P1", "VAV1P2", "VAV2P1", "VAV2P2", "VAV3P1", "VAV3P2", "VAV4P1", "VAV4P2", 
     };
+    
+    std::vector<int> window_sizes = {3, 5, 7, 9};
 
     std::vector<std::string> ids_imagens;
     ids_imagens.reserve(ids_imagens_train.size() + ids_imagens_test.size());
@@ -162,17 +173,21 @@ int main() {
         pathA = base_path + "/" + id + "CTI.mhd";
         pathB = base_path + "/" + id + "CTAI.mhd";
 
-        for (int rep = 0; rep < numRepeticoes; ++rep) {
-            process_image_pair(id, pathA, pathB, log_file);
-            log_file.flush(); // garantir que o log seja escrito a cada repetição
+        for (int win_size : window_sizes) {
+            for (int rep = 0; rep < numRepeticoes; ++rep) {
+                process_image_pair(id, pathA, pathB, log_file, win_size);
+                log_file.flush(); // garantir que o log seja escrito a cada repetição
+            }
         }
 
         // adicional para ter mais dados de tempo
         pathA = base_path + "/" + id + "CTAI.mhd";
         pathB = base_path + "/" + id + "CTI.mhd";
-        for (int rep = 0; rep < numRepeticoes; ++rep) {
-            process_image_pair(id, pathA, pathB, log_file);
-            log_file.flush(); // garantir que o log seja escrito a cada repetição
+        for (int win_size : window_sizes) {
+            for (int rep = 0; rep < numRepeticoes; ++rep) {
+                process_image_pair(id, pathA, pathB, log_file, win_size);
+                log_file.flush(); // garantir que o log seja escrito a cada repetição
+            }
         }
     }
 

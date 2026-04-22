@@ -149,7 +149,7 @@ namespace image_reader {
         }
 
         // tamanho em bytes de cada voxel conforme ElementType
-        std::size_t bytesPerVoxel = 1;
+        std::size_t bytesPerVoxel;
         if (elementType == "MET_SHORT" || elementType == "MET_USHORT") {
             bytesPerVoxel = 2;
         } else if (elementType == "MET_FLOAT") {
