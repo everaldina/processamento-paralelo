@@ -14,7 +14,7 @@ Script usado como task de build para o projeto no vscode:
 			"type": "shell",
 			"command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
 			"args": [
-				"src/main.cpp",
+				"src/sequencial.cpp",
 				"src/image_display/save_image.cpp",
 				"src/image_reader/mhd_reader.cpp", "src/metrics/ssim.cpp",
 				"-I./src",
@@ -22,7 +22,7 @@ Script usado como task de build para o projeto no vscode:
 				"-IC:/msys64/ucrt64/include/opencv4",
                 "-LC:/msys64/ucrt64/lib",
 				"-o",
-				"main.exe", "-lz",
+				"sequencial.exe", "-lz",
 				"-lopencv_core",
                 "-lopencv_imgcodecs"
 			],
