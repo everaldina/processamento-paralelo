@@ -10,10 +10,13 @@
 #include <iomanip>
 #include <limits> 
 
+#define LOG_FILE_NAME "sequencial.txt"
+#define OUTPUT_FOLDER "output/"
+
 // descomentar a chamada em main para salvar imagens
 void save_debug_images(int id, const std::string& pathA, const std::string& pathB, int eixo, int centerZ_A, int best_slice_B) {
-    std::cout << "Salvando imagens de debug em data/..." << std::endl;
-    image_display::ImageSaver saver("data/");
+    std::cout << "Salvando imagens de debug em " << OUTPUT_FOLDER << "..." << std::endl;
+    image_display::ImageSaver saver(OUTPUT_FOLDER);
     saver.save(pathA, eixo, centerZ_A, id + "_ImgA_CentroZ");
     saver.save(pathB, eixo, best_slice_B, id + "_ImgB_MaisParecida_com_A");
 }
@@ -128,6 +131,18 @@ bool contains(const std::vector<std::string>& vec, const std::string& value) {
 }
 
 int main() {
+    std::ofstream log_file(OUTPUT_FOLDER LOG_FILE_NAME);
+    if (!log_file.is_open()) {
+        std::cerr << "Falha ao abrir ou criar o " << OUTPUT_FOLDER << LOG_FILE_NAME << "!" << std::endl;
+        return 1;
+    }
+
+    auto date_time_now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    log_file << "=== INICIANDO BATERIA DE VERIFICACAO - " 
+         << std::put_time(std::localtime(&date_time_now), "%c") << " ===\n";
+    log_file.flush();
+
+
     int numRepeticoes = 10; // número de vezes para repetir o processo (para média de tempos)
     std::string base_path_train = "D:/workspace_data/tcc/orcascore/Challenge_data/Training_set/Images";
     std::string base_path_test = "D:/workspace_data/tcc/orcascore/Challenge_data/Test_set/Images";
@@ -154,16 +169,6 @@ int main() {
     ids_imagens.reserve(ids_imagens_train.size() + ids_imagens_test.size());
     ids_imagens.insert(ids_imagens.end(), ids_imagens_train.begin(), ids_imagens_train.end());
     ids_imagens.insert(ids_imagens.end(), ids_imagens_test.begin(), ids_imagens_test.end());
-
-    
-
-    std::ofstream log_file("data/log.txt");
-    if (!log_file.is_open()) {
-        std::cerr << "Falha ao abrir ou criar o data/log.txt!" << std::endl;
-        return 1;
-    }
-
-    log_file << "=== INICIANDO BATERIA DE VERIFICACAO ===\n";
     
     std::string pathA, pathB, base_path;
     for (const auto& id : ids_imagens) {
@@ -191,8 +196,12 @@ int main() {
         }
     }
 
+    date_time_now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    log_file << "=== FIM DA BATERIA DE VERIFICACAO - " 
+         << std::put_time(std::localtime(&date_time_now), "%c") << " ===\n";
     log_file.close();
-    std::cout << "\nProcessamento finalizado! Log salvo em data/log.txt." << std::endl;
+
+    std::cout << "\nProcessamento finalizado! Log salvo em " << OUTPUT_FOLDER << LOG_FILE_NAME << "." << std::endl;
 
     return 0;
 }
