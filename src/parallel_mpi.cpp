@@ -46,6 +46,7 @@ void process_image_pair(const std::string& image_id, const std::string& pathA, c
     int cortes_B = 0, widthA = 0, heightA = 0;
     int centerZ_A = 0, eixo = 2;
 
+    // rank 0 le os dados dos arquivos
     int success = 1;
     if (rank == 0) {
         image_reader::MHDReader readerA(pathA);
@@ -102,7 +103,6 @@ void process_image_pair(const std::string& image_id, const std::string& pathA, c
     int remainder = cortes_B % num_procs;
     int start_slice, local_count;
     
-    
     // calculo de divisao de fatias para cada processo
     /* EXEMPLO DE DIVISAO DE FATIAS
         30 cortes e 4 processos
@@ -137,7 +137,6 @@ void process_image_pair(const std::string& image_id, const std::string& pathA, c
     auto t_end_read = std::chrono::high_resolution_clock::now();
     double time_read = std::chrono::duration<double>(t_end_read - t_start_read).count();
 
-    
     if (rank == 0)
         std::cout << "Buscando melhor match entre " << cortes_B << " fatias de B..." << std::endl;
 
