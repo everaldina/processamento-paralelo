@@ -31,7 +31,7 @@ struct SliceBestSSIM {
 void process_image_pair(const std::string& image_id, const std::string& pathA, const std::string& pathB,
                         std::ofstream& log_file, int window_size, int rank, int num_procs) {
 
-    auto t_start_total = std::chrono::high_resolution_clock::now();
+    auto t_start_total = std::chrono::steady_clock::now();
 
     if (rank == 0) {
         std::cout << "\n=======================================" << std::endl;
@@ -39,7 +39,7 @@ void process_image_pair(const std::string& image_id, const std::string& pathA, c
     }
 
     
-    auto t_start_read = std::chrono::high_resolution_clock::now();
+    auto t_start_read = std::chrono::steady_clock::now();
 
     std::vector<short> central_sliceA;
     std::vector<short> volume_B;
@@ -134,13 +134,13 @@ void process_image_pair(const std::string& image_id, const std::string& pathA, c
     volume_B.clear();
     volume_B.shrink_to_fit();
 
-    auto t_end_read = std::chrono::high_resolution_clock::now();
+    auto t_end_read = std::chrono::steady_clock::now();
     double time_read = std::chrono::duration<double>(t_end_read - t_start_read).count();
 
     if (rank == 0)
         std::cout << "Buscando melhor match entre " << cortes_B << " fatias de B..." << std::endl;
 
-    auto t_start_search = std::chrono::high_resolution_clock::now();
+    auto t_start_search = std::chrono::steady_clock::now();
 
     SliceBestSSIM local_result = {-1.0, -1};
     double local_ssim_time  = 0.0;
@@ -150,10 +150,10 @@ void process_image_pair(const std::string& image_id, const std::string& pathA, c
     for (int i = 0; i < local_count; ++i) {
         const short* ptr_slice_B = local_volume_B.data() + (i * pixels_per_slice);
 
-        auto t_s = std::chrono::high_resolution_clock::now();
+        auto t_s = std::chrono::steady_clock::now();
         double data_range   = 65535.0;
         double current_ssim = metrics::calculate_ssim(ptr_central_A, ptr_slice_B, widthA, heightA, data_range, window_size);
-        auto t_e = std::chrono::high_resolution_clock::now();
+        auto t_e = std::chrono::steady_clock::now();
 
         local_ssim_time += std::chrono::duration<double>(t_e - t_s).count();
         local_ssim_count++;
@@ -174,10 +174,10 @@ void process_image_pair(const std::string& image_id, const std::string& pathA, c
     SliceBestSSIM global_result = {-1.0, -1};
     MPI_Reduce(&local_result, &global_result, 1, MPI_DOUBLE_INT, MPI_MAXLOC, 0, MPI_COMM_WORLD);
 
-    auto t_end_search = std::chrono::high_resolution_clock::now();
+    auto t_end_search = std::chrono::steady_clock::now();
     double time_search = std::chrono::duration<double>(t_end_search - t_start_search).count();
 
-    auto t_end_total = std::chrono::high_resolution_clock::now();
+    auto t_end_total = std::chrono::steady_clock::now();
     double time_total = std::chrono::duration<double>(t_end_total - t_start_total).count();
 
     // === LOG (somente rank 0) ===
@@ -259,8 +259,8 @@ int main(int argc, char* argv[]) {
     }
 
     int numRepeticoes = 5;
-    std::string base_path_train = "D:/workspace_data/tcc/orcascore/Challenge_data/Training_set/Images";
-    std::string base_path_test  = "D:/workspace_data/tcc/orcascore/Challenge_data/Test_set/Images";
+    std::string base_path_train = "/home/everaldina/dados/Challenge_data/Training_set/Images";
+    std::string base_path_test  = "/home/everaldina/dados/Challenge_data/Test_set/Images";
 
     std::vector<std::string> ids_imagens_train = {
         "TRV1P1", "TRV1P2", "TRV1P3", "TRV1P4", "TRV1P5", "TRV1P6", "TRV1P7", "TRV1P8",
