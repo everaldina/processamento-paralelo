@@ -1,15 +1,3 @@
-// Compilar/rodar: ver secao "Implementacao CUDA (GPU)" no README.md
-//
-// Este arquivo usa o mesmo leitor MHD/zlib das outras implementacoes
-// (image_reader/mhd_reader.hpp + mhd_reader.cpp), pois os dados deste projeto sao
-// .zraw comprimidos e exigem zlib para descompactar. Por isso o comando de build
-// passa os DOIS arquivos (parallel_cuda.cu e mhd_reader.cpp) numa unica chamada do
-// nvcc: no Windows o nvcc usa o MSVC (cl.exe) como compilador hospedeiro, entao
-// mhd_reader.cpp precisa ser recompilado por ele (nao reaproveitar o .o que o
-// g++/MSYS2 gera para os outros executaveis) para nao misturar ABIs incompativeis
-// (STL/CRT diferentes entre MinGW e MSVC). Isso tambem significa que o zlib usado
-// aqui precisa ser uma copia compilada para MSVC (ex.: via vcpkg), separada da que
-// o MSYS2 ja usa nos outros builds - ver README para o passo a passo.
 
 #include <cuda_runtime.h>
 #include <device_launch_parameters.h>

@@ -1,28 +1,6 @@
 #pragma once
-
-// Kernel CUDA (equivalente em GPU do calculate_ssim de ssim_impl.hpp). Fica num .cuh
-// separado (incluido de parallel_cuda.cu) so por organizacao - nao precisa de nenhuma
-// flag extra no nvcc, o -I./src que ja existe para image_reader/mhd_reader.hpp resolve
-// esse #include tambem.
-
 #include <cuda_runtime.h>
 
-// =====================================================================================
-// Kernel CUDA: um bloco por corte de B (grid com blockIdx.x = indice do corte).
-// As threads do bloco varrem os pixels validos do corte em passadas (grid-stride loop)
-// e cada uma calcula a janela deslizante (win_size x win_size) completa para o seu
-// pixel - mesma formula de metrics::calculate_ssim, so que executada em paralelo.
-// O resultado (SSIM medio do corte) sai de uma reducao em memoria compartilhada.
-// Ver README, secao "Como as threads, blocos e grids sao organizados", para uma
-// explicacao passo a passo com exemplos numericos de como threadIdx/blockIdx/blockDim
-// se combinam aqui.
-//
-// Nota de precisao: as somas de janela (sum_a, sum_b, sum_sq_a, sum_sq_b, sum_a_times_b)
-// sao somas de inteiros (valores em `short`) representados em double e permanecem exatas
-// independente da ordem, entao sao bit-a-bit identicas a versao sequencial. Ja o
-// acumulo final (soma do SSIM de cada pixel do corte) e feito em arvore por varias
-// threads, e ponto flutuante nao e associativo - o valor final pode divergir da CPU
-// por ~1e-12, bem abaixo da tolerancia de 1e-3 ja usada nos notebooks deste projeto.
 
 // funcao __global__ do kernel roda na GPU e e chamada a partir da CPU.
 __global__ void ssim_kernel(const short* __restrict__ image_a,
