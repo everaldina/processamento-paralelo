@@ -64,10 +64,10 @@ Rode num terminal (cmd/PowerShell no Windows, bash no Linux ou dentro do WSL):
 
 Se o comando nao existir ("comando nao encontrado" / "not recognized"), o driver da NVIDIA nao esta instalado (ou nao esta no PATH) - ver "onde baixar" abaixo.
 
-Se existir, a saida mostra uma tabela com o nome da GPU (deve aparecer "GeForce GTX 1060"), a versao do driver (linha "Driver Version") e, no canto superior direito, "CUDA Version: X.Y" - esse numero e a versao MAXIMA do CUDA Toolkit que esse driver suporta rodar (nao e a versao do toolkit instalado, e so o teto permitido pelo driver). Se voce quiser instalar um CUDA Toolkit mais novo que esse numero, precisa atualizar o driver primeiro.
+Se existir, a saida mostra uma tabela com o nome da GPU, a versao do driver (linha "Driver Version") e, no canto superior direito, "CUDA Version: X.Y" - esse numero e a versao MAXIMA do CUDA Toolkit que esse driver suporta rodar (nao e a versao do toolkit instalado, e so o teto permitido pelo driver). Se voce quiser instalar um CUDA Toolkit mais novo que esse numero, precisa atualizar o driver primeiro.
 
 Onde baixar/atualizar o driver:
-- Windows: https://www.nvidia.com/Download/index.aspx (escolha GeForce > GTX 1060 > Windows) ou pelo app GeForce Experience, se ja tiver instalado.
+- Windows: https://www.nvidia.com/Download/index.aspx (escolha GeForce > <gpu name> > Windows) ou pelo app GeForce Experience, se ja tiver instalado.
 - Linux (Ubuntu/Debian): `sudo ubuntu-drivers autoinstall` (detecta e instala o driver recomendado automaticamente) ou `sudo apt install nvidia-driver-<numero-da-versao>` para uma versao especifica.
 - WSL2: NAO instale um driver Linux dentro do WSL - ele usa o driver que ja esta instalado no Windows (ver secao "Opcao C: WSL2" mais abaixo).
 
