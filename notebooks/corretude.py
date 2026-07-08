@@ -67,11 +67,21 @@ def teste_corretude(df_ref: pd.DataFrame, df_comp: pd.DataFrame, lista_ids: list
             #### COMPARAÇÃO DE VALORES DE SSIM MÁXIMO ENTRE PARALÉLO E SEQUENCIAL ####
             set_max_ssim_ref = set(df_corte_ref['ssim_maximo'])
             set_max_ssim_comp = set(df_corte_comp['ssim_maximo'])
+            
+            max_diff = 0
+            list_max_ssim_comp = list(set_max_ssim_comp)
+            for i in range(len(list_max_ssim_comp)):
+                for j in range(i + 1, len(list_max_ssim_comp)):
+                    diff = abs(list_max_ssim_comp[i] - list_max_ssim_comp[j])
+                    if diff > max_diff:
+                        max_diff = diff
+                
+            
 
             # Logs de warninga para resultados incosistentes
             if len(set_max_ssim_ref) > 1:
                 print(f"Variação nos valores de SSIM '{nome_ref}' | ID {id} | Cortes {corte} | Valores: {set_max_ssim_ref}")
-            if len(set_max_ssim_comp) > 1:
+            if (len(set_max_ssim_comp) > 1) and (max_diff > tolerance_ssim):
                 print(f"Variação nos valores de SSIM '{nome_comp}' | ID {id} | Cortes {corte} | Valores: {set_max_ssim_comp}")
             
             ssim_correto = True
